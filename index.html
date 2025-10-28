@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop Sticky Note - How to Use</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .download-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .hero-section h2 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .feature-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .showcase-item {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .showcase-item .icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        .showcase-item h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .screenshot-area {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .screenshot-placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            padding: 100px 40px;
+            color: white;
+            font-size: 1.5em;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .version-info {
+            background: #e9ecef;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #FFD700;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin: 20px 0 10px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #FFD700;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card h4 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #666;
+        }
+
+        .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .steps {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .steps ol {
+            margin-left: 20px;
+        }
+
+        .steps li {
+            margin: 10px 0;
+            padding-left: 10px;
+        }
+
+        .tip {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .tip strong {
+            color: #856404;
+        }
+
+        .keyboard-shortcut {
+            background: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th,
+        table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background: #667eea;
+            color: white;
+        }
+
+        table tr:hover {
+            background: #f8f9fa;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Desktop Sticky Note</h1>
+            <p>Your Quick Access File & Folder Manager</p>
+            <div class="version-info">Version 1.0.0</div>
+            <br><br>
+            <a href="#download" class="download-btn">⬇️ Download Now</a>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h2>Organize Your Files Like Never Before</h2>
+            <p>A lightweight, powerful desktop tool for instant file and folder access</p>
+
+            <div class="feature-showcase">
+                <div class="showcase-item">
+                    <div class="icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Access your files in milliseconds</p>
+                </div>
+                <div class="showcase-item">
+                    <div class="icon">🎨</div>
+                    <h3>Beautiful UI</h3>
+                    <p>Clean, modern interface</p>
+                </div>
+                <div class="showcase-item">
+                    <div class="icon">🔒</div>
+                    <h3>Secure</h3>
+                    <p>Your data stays on your PC</p>
+                </div>
+                <div class="showcase-item">
+                    <div class="icon">🆓</div>
+                    <h3>Free Forever</h3>
+                    <p>No subscriptions, no ads</p>
+                </div>
+            </div>
+
+            <!-- Screenshot Area -->
+            <div class="screenshot-area">
+                <h2>See It In Action</h2>
+                <div class="screenshot-placeholder">
+                    🖼️ Screenshot: Main Window
+                    <br><br>
+                    <small>Drag & drop files, hover for previews, organize with custom titles</small>
+                </div>
+                <div class="screenshot-placeholder">
+                    🖼️ Screenshot: Preview Feature
+                    <br><br>
+                    <small>Hover over files to see instant previews of images, text, and code</small>
+                </div>
+                <div class="screenshot-placeholder">
+                    🖼️ Screenshot: Multiple Notes
+                    <br><br>
+                    <small>Create multiple notes to organize different projects</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Getting Started -->
+            <div class="section">
+                <h2>🚀 Getting Started</h2>
+                <p>Desktop Sticky Note is a lightweight application that helps you quickly access your frequently used
+                    files and folders. It stays on your desktop for easy access!</p>
+
+                <div class="steps">
+                    <h3>First Time Setup:</h3>
+                    <ol>
+                        <li>Launch the application - it will automatically start with Windows</li>
+                        <li>A sticky note window will appear on your desktop</li>
+                        <li>Start adding your favorite files and folders!</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Main Features -->
+            <div class="section">
+                <h2>✨ Main Features</h2>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="icon">📂</div>
+                        <h4>Quick File Access</h4>
+                        <p>Add files and folders for instant access. Click to open, right-click for more options.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="icon">📌</div>
+                        <h4>Pin to Stay on Top</h4>
+                        <p>Toggle between desktop mode and always-on-top mode with the pin button.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="icon">👁️</div>
+                        <h4>Hover Preview</h4>
+                        <p>Hover over items for 2 seconds to see previews of images, text files, JSON, and folder
+                            contents.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="icon">✏️</div>
+                        <h4>Custom Titles</h4>
+                        <p>Double-click the title to rename your sticky notes for better organization.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="icon">🔄</div>
+                        <h4>Auto-Save</h4>
+                        <p>Your notes are automatically saved and restored when you restart your PC.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="icon">📋</div>
+                        <h4>Multiple Notes</h4>
+                        <p>Create multiple sticky notes to organize different projects or categories.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How to Use -->
+            <div class="section">
+                <h2>📖 How to Use</h2>
+
+                <h3>Adding Files & Folders</h3>
+                <div class="steps">
+                    <p><strong>Method 1: Drag & Drop</strong></p>
+                    <ol>
+                        <li>Drag files or folders from Windows Explorer</li>
+                        <li>Drop them onto the sticky note window</li>
+                        <li>They will be added automatically</li>
+                    </ol>
+                </div>
+
+                <div class="steps">
+                    <p><strong>Method 2: Add Button</strong></p>
+                    <ol>
+                        <li>Click the "➕ Add Item" button</li>
+                        <li>Choose "📄 Add File(s)" or "📁 Add Folder"</li>
+                        <li>Browse and select your items</li>
+                    </ol>
+                </div>
+
+                <h3>Working with Items</h3>
+                <table>
+                    <tr>
+                        <th>Action</th>
+                        <th>How To</th>
+                        <th>Result</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Open Item</strong></td>
+                        <td>Left-click on the item</td>
+                        <td>Opens file/folder in default application</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Show Preview</strong></td>
+                        <td>Hover for 2 seconds</td>
+                        <td>Shows preview popup with content/info</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Context Menu</strong></td>
+                        <td>Right-click on the item</td>
+                        <td>Shows menu with more options</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Remove Item</strong></td>
+                        <td>Click the ❌ button</td>
+                        <td>Removes item from the list</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Open All</strong></td>
+                        <td>Click "🚀 Open All" button</td>
+                        <td>Opens all items at once</td>
+                    </tr>
+                </table>
+
+                <h3>Right-Click Context Menu</h3>
+                <div class="steps">
+                    <p>Right-click any item to access these options:</p>
+                    <ul>
+                        <li><strong>📂 Open</strong> - Opens the file or folder</li>
+                        <li><strong>📍 Open File Location</strong> - Opens Explorer and selects the file</li>
+                        <li><strong>📋 Copy Path</strong> - Copies the full path to clipboard</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Preview Feature -->
+            <div class="section">
+                <h2>👁️ Preview Feature</h2>
+                <p>Hover over any item for 2 seconds to see a preview popup:</p>
+
+                <h3>Supported Previews:</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="icon">🖼️</div>
+                        <h4>Images</h4>
+                        <p>JPG, PNG, GIF, BMP, ICO, WEBP - Shows thumbnail preview</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="icon">📄</div>
+                        <h4>Text Files</h4>
+                        <p>TXT, LOG, MD, CSV - Shows first 20 lines of content</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="icon">💻</div>
+                        <h4>Code Files</h4>
+                        <p>JSON, XML, YAML, CS, JS, PY, HTML, CSS - Shows code preview</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="icon">📁</div>
+                        <h4>Folders</h4>
+                        <p>Shows first 10 items inside the folder</p>
+                    </div>
+                </div>
+
+                <div class="tip">
+                    <strong>💡 Tip:</strong> Large files (>5 MB) will show a warning but still display the first 20
+                    lines for quick reference.
+                </div>
+            </div>
+
+            <!-- Pin Feature -->
+            <div class="section">
+                <h2>📌 Pin Feature</h2>
+                <p>Control whether your sticky note stays on top of other windows or stays on the desktop.</p>
+
+                <table>
+                    <tr>
+                        <th>Mode</th>
+                        <th>Icon</th>
+                        <th>Behavior</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Unpinned</strong></td>
+                        <td>📌</td>
+                        <td>Stays on desktop (below other windows)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pinned</strong></td>
+                        <td>📍</td>
+                        <td>Stays on top of all windows</td>
+                    </tr>
+                </table>
+
+                <div class="steps">
+                    <p><strong>How to Toggle:</strong></p>
+                    <ol>
+                        <li>Click the pin button (📌) in the header</li>
+                        <li>Icon changes to 📍 when pinned</li>
+                        <li>Click again to unpin</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Title Editing -->
+            <div class="section">
+                <h2>✏️ Custom Titles</h2>
+                <p>Rename your sticky notes to organize them better.</p>
+
+                <div class="steps">
+                    <ol>
+                        <li>Double-click on the title text</li>
+                        <li>Type your new title</li>
+                        <li>Press <span class="keyboard-shortcut">Enter</span> to save or <span
+                                class="keyboard-shortcut">Esc</span> to cancel</li>
+                    </ol>
+                </div>
+
+                <div class="tip">
+                    <strong>💡 Tip:</strong> Use descriptive titles like "Work Files", "Personal Docs", or "Project X"
+                    to easily identify your notes.
+                </div>
+            </div>
+
+            <!-- Multiple Notes -->
+            <div class="section">
+                <h2>📋 Multiple Notes</h2>
+                <p>Create multiple sticky notes to organize different categories of files.</p>
+
+                <div class="steps">
+                    <p><strong>Creating New Notes:</strong></p>
+                    <ol>
+                        <li>Click the <strong>+</strong> button in the header</li>
+                        <li>A new empty sticky note appears</li>
+                        <li>Add items and customize the title</li>
+                    </ol>
+                </div>
+
+                <div class="steps">
+                    <p><strong>Closing Notes:</strong></p>
+                    <ol>
+                        <li>Click the <strong>×</strong> button to close a note</li>
+                        <li>The note and its saved file are deleted</li>
+                        <li>Only open notes are restored on restart</li>
+                    </ol>
+                </div>
+
+                <div class="tip">
+                    <strong>⚠️ Important:</strong> Closing a note permanently deletes it. Only notes that remain open
+                    when you exit the app will be restored.
+                </div>
+            </div>
+
+            <!-- Startup Behavior -->
+            <div class="section">
+                <h2>🔄 Startup & Auto-Save</h2>
+
+                <h3>Automatic Startup</h3>
+                <p>The application automatically starts with Windows and restores your open notes.</p>
+
+                <h3>Save Behavior</h3>
+                <table>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>What Happens</th>
+                    </tr>
+                    <tr>
+                        <td>Adding items</td>
+                        <td>Automatically saved</td>
+                    </tr>
+                    <tr>
+                        <td>Moving/resizing window</td>
+                        <td>Position saved (if note has items)</td>
+                    </tr>
+                    <tr>
+                        <td>Changing title</td>
+                        <td>Saved immediately</td>
+                    </tr>
+                    <tr>
+                        <td>Toggling pin</td>
+                        <td>Saved immediately</td>
+                    </tr>
+                    <tr>
+                        <td>Closing note</td>
+                        <td>File deleted (note removed)</td>
+                    </tr>
+                    <tr>
+                        <td>Exiting app</td>
+                        <td>All open notes saved</td>
+                    </tr>
+                    <tr>
+                        <td>PC restart</td>
+                        <td>Open notes restored on next startup</td>
+                    </tr>
+                </table>
+
+                <div class="tip">
+                    <strong>💡 Tip:</strong> Empty notes (without items) are not saved to keep your workspace clean.
+                </div>
+            </div>
+
+            <!-- Tips & Tricks -->
+            <div class="section">
+                <h2>💡 Tips & Tricks</h2>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🎯 Quick Organization</h4>
+                        <p>Create separate notes for different projects: "Work", "Personal", "Downloads", etc.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>⚡ Fast Access</h4>
+                        <p>Pin important notes to keep them always visible while working.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>📊 Preview Before Opening</h4>
+                        <p>Hover to preview file contents without opening them - saves time!</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>🔍 Find Files Quickly</h4>
+                        <p>Use "Open File Location" to quickly locate files in Windows Explorer.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>📋 Share Paths</h4>
+                        <p>Right-click and "Copy Path" to easily share file locations with others.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>🎨 Visual Organization</h4>
+                        <p>Position notes in different screen areas for visual categorization.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Troubleshooting -->
+            <div class="section">
+                <h2>🔧 Troubleshooting</h2>
+
+                <h3>Common Issues & Solutions</h3>
+
+                <div class="steps">
+                    <p><strong>Q: Notes don't appear on startup</strong></p>
+                    <p>A: Make sure you had notes open when you last closed the app. Only open notes are restored.</p>
+                </div>
+
+                <div class="steps">
+                    <p><strong>Q: Preview doesn't show</strong></p>
+                    <p>A: Make sure you hover for a full 2 seconds. Move mouse away and try again.</p>
+                </div>
+
+                <div class="steps">
+                    <p><strong>Q: File won't open</strong></p>
+                    <p>A: The file may have been moved or deleted. Remove it and add the new location.</p>
+                </div>
+
+                <div class="steps">
+                    <p><strong>Q: Can't see the note window</strong></p>
+                    <p>A: The note might be off-screen. Close and reopen the app to reset positions.</p>
+                </div>
+
+                <div class="steps">
+                    <p><strong>Q: How do I disable auto-startup?</strong></p>
+                    <p>A: Open Task Manager → Startup tab → Disable "DesktopStickyNote"</p>
+                </div>
+            </div>
+
+            <!-- Keyboard Shortcuts -->
+            <div class="section">
+                <h2>⌨️ Keyboard Shortcuts</h2>
+                <table>
+                    <tr>
+                        <th>Action</th>
+                        <th>Shortcut</th>
+                    </tr>
+                    <tr>
+                        <td>Save title edit</td>
+                        <td><span class="keyboard-shortcut">Enter</span></td>
+                    </tr>
+                    <tr>
+                        <td>Cancel title edit</td>
+                        <td><span class="keyboard-shortcut">Esc</span></td>
+                    </tr>
+                    <tr>
+                        <td>Close note</td>
+                        <td>Click <strong>×</strong> button</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Data Location -->
+            <div class="section">
+                <h2>💾 Data Storage</h2>
+                <p>Your sticky note data is stored in:</p>
+                <code>%AppData%\DesktopStickyNote\</code>
+
+                <div class="tip">
+                    <strong>💡 Backup:</strong> You can backup this folder to save your notes and restore them later.
+                </div>
+            </div>
+
+            <!-- Download Section -->
+            <div class="section" id="download">
+                <h2>⬇️ Download</h2>
+                <div
+                    style="text-align: center; padding: 40px; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border-radius: 15px;">
+                    <h3 style="font-size: 2em; margin-bottom: 20px;">Ready to Get Started?</h3>
+                    <p style="font-size: 1.2em; margin-bottom: 30px; color: #666;">Download Desktop Sticky Note and
+                        boost your productivity today!</p>
+
+                    <a href="../bin/Release/net8.0-windows/DesktopStickyNote.exe" class="download-btn" download>
+                        ⬇️ Download Desktop Sticky Note v1.0.0
+                    </a>
+
+                    <div style="margin-top: 30px;">
+                        <p style="color: #666;"><strong>System Requirements:</strong></p>
+                        <p style="color: #666;">Windows 10/11 | .NET 8.0 Runtime | 50 MB Free Space</p>
+                    </div>
+
+                    <div
+                        style="margin-top: 20px; padding: 20px; background: white; border-radius: 10px; display: inline-block;">
+                        <p style="color: #333; margin-bottom: 10px;"><strong>Alternative Download Options:</strong></p>
+                        <a href="../bin/Debug/net8.0-windows/DesktopStickyNote.exe"
+                            style="color: #667eea; text-decoration: none; margin: 0 10px;" download>
+                            📦 Debug Build
+                        </a>
+                        |
+                        <a href="../bin/Release/net8.0-windows/publish/"
+                            style="color: #667eea; text-decoration: none; margin: 0 10px;">
+                            📂 Browse Files
+                        </a>
+                    </div>
+
+                    <div class="tip" style="margin-top: 30px; text-align: left;">
+                        <strong>🛡️ Security Note:</strong> This application is safe and doesn't collect any personal
+                        data. All your files and settings stay on your computer.
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Requirements -->
+            <div class="section">
+                <h2>💻 System Requirements</h2>
+                <table>
+                    <tr>
+                        <th>Component</th>
+                        <th>Requirement</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Operating System</strong></td>
+                        <td>Windows 10 or Windows 11</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Framework</strong></td>
+                        <td>.NET 8.0 Runtime (included in installer)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RAM</strong></td>
+                        <td>Minimum 2 GB (4 GB recommended)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disk Space</strong></td>
+                        <td>50 MB free space</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Display</strong></td>
+                        <td>1280x720 or higher resolution</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- What's New -->
+            <div class="section">
+                <h2>🎉 What's New in v1.0.0</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>✨ Initial Release</h4>
+                        <p>First stable version with all core features</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>👁️ Preview System</h4>
+                        <p>Hover previews for images, text, JSON, and folders</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📌 Pin Feature</h4>
+                        <p>Toggle between desktop and always-on-top modes</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🖱️ Context Menu</h4>
+                        <p>Right-click options for advanced file operations</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>✏️ Custom Titles</h4>
+                        <p>Rename your notes for better organization</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⚡ Fast Startup</h4>
+                        <p>Optimized loading with parallel processing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Desktop Sticky Note | Made with ❤️ for productivity</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                <a href="#download" style="color: #FFD700; text-decoration: none;">Download</a> |
+                <a href="https://github.com" style="color: #FFD700; text-decoration: none;">GitHub</a> |
+                <a href="mailto:support@example.com" style="color: #FFD700; text-decoration: none;">Support</a>
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>
